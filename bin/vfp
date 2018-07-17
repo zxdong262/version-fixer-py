@@ -1,0 +1,36 @@
+#!/bin/bash
+
+dir_resolve() {
+  local dir=`dirname "$1"`
+  local file=`basename "$1"`
+  pushd "$dir" &>/dev/null || return $? # On error, return error code
+  echo "`pwd -P`/$file" # output full, link-resolved path with filename
+  popd &> /dev/null
+}
+base=`dir_resolve "$0"`
+base2=`dirname "$base"`
+base1=`dirname "$base2"`
+n3="/main.py"
+n4=$base1$n3
+run=`dir_resolve "$n4"`
+
+
+read -r -d '' hh << EOM
+  usage: vfp [dir]
+
+  batch modify package.json dependencies version[linux/macos only]
+
+  options:
+    -p=prefix update the version number with prefix, "*" will replace version number with "*"
+    -h --help output usage information
+EOM
+
+echo "$hh"
+function argv {
+    for a in ${BASH_ARGV[*]} ; do
+      echo -n "$a "
+    done
+    echo
+}
+
+python $run `argv`
