@@ -14,7 +14,7 @@ def main(argv):
       prefix = arg[3:]
     elif arg != ''
       path = os.path.abspath(arg)
-    
+
 
 
 if __name__ == '__main__':
