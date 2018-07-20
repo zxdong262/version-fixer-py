@@ -15,17 +15,6 @@ n4=$base1$n3
 run=`dir_resolve "$n4"`
 
 
-read -r -d '' hh << EOM
-  usage: vfp [dir]
-
-  batch modify package.json dependencies version[linux/macos only]
-
-  options:
-    -p=prefix update the version number with prefix, "*" will replace version number with "*"
-    -h --help output usage information
-EOM
-
-echo "$hh"
 function argv {
     for a in ${BASH_ARGV[*]} ; do
       echo -n "$a "

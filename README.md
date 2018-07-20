@@ -16,12 +16,12 @@ git clone git@github.com:zxdong262/version-fixer-py.git
 npm i -g version-fixer-py
 cd your project_folder
 vfp
-# or
-vfp path/to/your/project
+# or hanle multi project
+vfp path/to/your/project1 path/to/your/project2
 # with version
-version-fixer -p=^ path/to/your/project
+version-fixer -p=^ path/to/your/project1 path/to/your/project2
 # make all version to '*'
-version-fixer -p=* path/to/your/project
+version-fixer -p=* path/to/your/project1 path/to/your/project2
 ```
 
 ## test
