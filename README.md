@@ -13,6 +13,7 @@ git clone git@github.com:zxdong262/version-fixer-py.git
 
 ## use
 ```bash
+# makesure `python` command works
 npm i -g version-fixer-py
 cd your project_folder
 vfp
