@@ -1,37 +1,37 @@
 {
-  "name": "version-fixer-py",
-  "description": "batch modify package.json dependencies version[linux/macos only]",
-  "version": "0.0.1",
+  "name": "version-fixer-py", 
+  "description": "batch modify package.json dependencies version[linux/macos only]", 
+  "version": "0.0.1", 
   "keywords": [
-    "version",
+    "version", 
     "package.json"
-  ],
-  "main": "bin/vfp",
-  "homepage": "https://github.com/zxdong262/version-fixer-py",
-  "bugs": "https://github.com/zxdong262/version-fixer-py/issues",
+  ], 
+  "main": "bin/vfp", 
+  "homepage": "https://github.com/zxdong262/version-fixer-py", 
+  "bugs": "https://github.com/zxdong262/version-fixer-py/issues", 
   "author": {
-    "email": "zxdong@gmail.com",
-    "name": "ZHAO Xudong",
+    "email": "zxdong@gmail.com", 
+    "name": "ZHAO Xudong", 
     "url": "http://html5beta.com"
-  },
+  }, 
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "https://github.com/zxdong262/version-fixer-py"
-  },
+  }, 
   "dependencies": {
-    "commander": "*"
-  },
+    "commander": "2.16.0"
+  }, 
   "devDependencies": {
     "mocha": "^2.x"
-  },
+  }, 
   "engines": {
     "node": ">=6"
-  },
+  }, 
   "scripts": {
     "test": "mocha"
-  },
-  "license": "MIT",
-  "preferGlobal": "true",
+  }, 
+  "license": "MIT", 
+  "preferGlobal": true,
   "bin": {
     "vfp": "bin/vfp"
   }
