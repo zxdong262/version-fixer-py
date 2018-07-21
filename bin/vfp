@@ -1,0 +1,18 @@
+#!/bin/bash
+
+base=`realpath "$0"`
+base2=`dirname "$base"`
+base1=`dirname "$base2"`
+n3="/main.py"
+n4=$base1$n3
+run=`realpath "$n4"`
+
+
+function argv {
+    for a in ${BASH_ARGV[*]} ; do
+      echo -n "$a "
+    done
+    echo
+}
+
+python $run `argv`
