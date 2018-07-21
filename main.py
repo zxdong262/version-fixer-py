@@ -86,6 +86,8 @@ def main(argv):
     varr = []
     deps = ['dependencies', 'devDependencies']
     for dep in deps:
+      if targetPkg.get(dep) == None:
+        continue
       pkgHandle(targetPkg[dep], targetPkg, varr, p, dep)
 
     for obj in varr:
