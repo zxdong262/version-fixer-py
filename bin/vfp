@@ -7,12 +7,12 @@ dir_resolve() {
   echo "`pwd -P`/$file" # output full, link-resolved path with filename
   popd &> /dev/null
 }
-base=`dir_resolve "$0"`
+base=`realpath "$0"`
 base2=`dirname "$base"`
 base1=`dirname "$base2"`
 n3="/main.py"
 n4=$base1$n3
-run=`dir_resolve "$n4"`
+run=`realpath "$n4"`
 
 
 function argv {

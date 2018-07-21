@@ -1,9 +1,11 @@
 
 import sys
 import os
+import json
+from collections import OrderedDict
 
 def main(argv):
-  prefx = ''
+  prefix = ''
   cwd = os.path.abspath(os.getcwd())
   cwds = []
   requestHelp = False
@@ -20,7 +22,7 @@ def main(argv):
 
 
   if requestHelp == True:
-    return print(
+    print(
       '''usage: vfp [dir]
 
   batch modify package.json dependencies version[linux/macos only]
@@ -30,16 +32,80 @@ def main(argv):
     -h --help output usage information
       '''
     )
+    return
 
   if len(cwds) < 1:
     cwds = [cwd]
   else:
-    cwds = map(lambda x: os.path.abspath(cwds), cwds)
+    cwds = list(map(lambda x: os.path.abspath(x), cwds))
+
+  def writeFile(p, txt):
+    '''write file'''
+    try:
+      file = open(p, 'w')
+      file.write(txt)
+      file.close()
+
+    except:
+      print('error when read:', p)
+
+  def readJson(p):
+    '''read json'''
+    try:
+      file = open(p, 'r')
+      txt = file.read()
+      pkg = json.loads(txt, object_pairs_hook=OrderedDict)
+      file.close()
+      return OrderedDict(pkg)
+
+    except:
+      print('error when read:', p)
+      return False
+
+  def pkgHandle(dependencies, targetPkg, varr, rpath, dep):
+    keys = dependencies.keys()
+    for key in keys:
+      pkgInfo = {}
+      p = rpath + '/node_modules/' + key + '/package.json'
+      pkgInfo = readJson(p)
+      if pkgInfo != False:
+        varr.append({
+          'name': pkgInfo[u'name'],
+          'version': pkgInfo[u'version'],
+          'type': dep
+        })
+    return varr
 
   def handler(p):
-    '''hanlde folder'''
+    '''hanlde package.json for each path'''
+    pkgPath = p + '/package.json'
+    print('target:', pkgPath)
+    targetPkg = readJson(pkgPath)
+    if targetPkg == False:
+      return
+    varr = []
+    deps = ['dependencies', 'devDependencies']
+    for dep in deps:
+      pkgHandle(targetPkg[dep], targetPkg, varr, p, dep)
 
-    
+    for obj in varr:
+      type = obj['type']
+      version = obj['version']
+      name = obj['name']
+      v = '*' if prefix == '*' else prefix + version
+      print(str(name), targetPkg[type][name], '-->', v)
+      targetPkg[type][name] = v
+
+    pkgNew = json.dumps(targetPkg, indent=2) + '\n'
+    writeFile(
+      pkgPath,
+      pkgNew
+    )
+
+    print('done:', pkgPath)
+
+  for p in cwds:
+    handler(p)
 
 if __name__ == '__main__':
   main(sys.argv)

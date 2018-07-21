@@ -1,5 +1,5 @@
 # version-fixer-py
-batch modify package.json dependencies version[linux only]
+batch modify package.json dependencies version[linux/macos only]
 
 ## install
 ```bash
