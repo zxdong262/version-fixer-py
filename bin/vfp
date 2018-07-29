@@ -5,7 +5,7 @@ base2=`dirname "$base"`
 base1=`dirname "$base2"`
 n3="/main.py"
 n4=$base1$n3
-run=`realpath "$n4"`
+run=`readlink -f "$n4"`
 
 
 function argv {

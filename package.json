@@ -1,7 +1,7 @@
 {
   "name": "version-fixer-py", 
   "description": "batch modify package.json dependencies version[linux/macos only]", 
-  "version": "0.0.2", 
+  "version": "0.0.3", 
   "keywords": [
     "version", 
     "package.json"
@@ -17,9 +17,10 @@
   "repository": {
     "type": "git", 
     "url": "https://github.com/zxdong262/version-fixer-py"
-  },
+  }, 
   "devDependencies": {
-    "mocha": "^2.x"
+    "mocha": "^2.5.3",
+    "shelljs": "0.8.2"
   }, 
   "engines": {
     "node": ">=6"
