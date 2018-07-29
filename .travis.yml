@@ -1,7 +1,7 @@
 language: python
 
 python:
-    - 3.x
+    - 3.6
 install:
   nvm install 8
 sudo: false

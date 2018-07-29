@@ -1,4 +1,5 @@
 # version-fixer-py
+[![Build Status](https://travis-ci.org/zxdong262/version-fixer-py.svg?branch=test)](https://travis-ci.org/zxdong262/version-fixer-py)
 batch modify package.json dependencies version[linux/macos only]
 
 ## install
